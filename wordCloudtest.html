@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src='C:\Users\ASUS\Desktop\echarts.simple.js'></script>
+        <script src='C:\Users\ASUS\Desktop\echarts-wordcloud.js'></script>
+    </head>
+    <body>
+        <style>
+            html, body, #main {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+        </style>
+        <div id='main'></div>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            var option = {
+                tooltip: {},
+                series: [ {
+                    type: 'wordCloud',
+                    gridSize: 2,
+                    sizeRange: [12, 50],
+                    rotationRange: [-90, 90],
+                    shape: 'pentagon',
+                    width: 600,
+                    height: 400,
+                    drawOutOfBound: true,
+                    textStyle: {
+                        normal: {
+                            color: function () {
+                                return 'rgb(' + [
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160)
+                                ].join(',') + ')';
+                            }
+                        },
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowColor: '#333'
+                        }
+                    },
+                    data: [
+                        {name:'致敬',value:1200},
+                        {name:'我们',value:1122},
+                        {name:'哭',value:1100},
+                        {name:'加油',value:1050},
+                        {name:'中国',value:998},
+                        {name:'武汉',value:996},
+                        {name:'疫情',value:988},
+                        {name:'好',value:888},
+                        {name:'英雄',value:886},
+                        {name:'你们',value:882},
+                        {name:'感谢',value:855},
+                        {name:'👍',value:845},
+                        {name:'感动',value:835},
+                        {name:'电视剧',value:820},
+                        {name:'医护人员',value:810},
+                        {name:'行者',value:799},
+                        {name:'医生',value:788},
+                        {name:'导演',value:760},
+                        {name:'最美',value:660},
+                        {name:'剧',value:640},
+                        {name:'抗疫',value:620},
+                        {name:'演员',value:555},
+                        {name:'眼泪',value:520},
+                        {name:'他们',value:510},
+                        {name:'伟大',value:488},
+                        {name:'自己',value:466},
+                        {name:'真实',value:399},
+                        {name:'知道',value:398},
+                        {name:'时候',value:333},
+                    ]
+                } ]
+            };
+
+            chart.setOption(option);
+
+            window.onresize = chart.resize;
+        </script>
+    </body>
+</html>
