@@ -1,0 +1,23 @@
+import jieba
+#import wordcloud
+import pandas as pd
+import matplotlib as plt
+
+f = open("comments.txt", 'r',encoding = 'UTF-8')
+text = f.read()
+f.close()
+
+cut_text = jieba.lcut(text)#将原文件分为词语
+
+filted_text_list = []
+for s in cut_text:          
+    filted_text_list.append(s)
+words_dic = {}
+for s in filted_text_list:
+    words_dic[s] = words_dic.get(s, 0) + 1#统计词频
+words_list = list(words_dic.items())
+words_list.sort(key=lambda x: x[1],reverse=True)
+words_dic = dict(words_list)
+cloud_words_list = list(words_dic.keys())
+cloud_words = " ".join(cloud_words_list[:20])#取排名前二十的词语
+print(cloud_words)
